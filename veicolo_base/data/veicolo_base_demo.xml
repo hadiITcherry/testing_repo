@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+      <!--Users-->
+      <record id="base.user_demo" model="res.users">
+<!--        <field name="groups_id" eval="[(4, ref('vehicle.fleet_group_manager'))]" />-->
+           <field name="groups_id" eval="[(4, ref('invoice.vehicle_invoice_group_manager'))]" />
+      </record>
+
+      <record id="veicolo_base_1" model="purchase.order">
+          <field name="vin_sn">5454541</field>
+          <field name="model_id" ref="model_astra"/>
+          <field name="color">Black</field>
+          <field name="brand_id" ref="BMW" />
+          <field name="invoice_date" eval="(DateTime.now() - timedelta(days=336)).strftime('%Y-%m-%d')" />
+          <field name="odometer_unit">kilometers</field>
+          <field name="price">20000</field>
+          <field eval="[(6,0,[ref('vehicle_tag_leasing'),ref('vehicle_tag_break'),ref('vehicle_tag_senior')])]" name="tag_ids"/>
+      </record>
+
+      <record id="veicolo_base_2" model="purchase.order">
+          <field name="vin_sn">5433dd541</field>
+          <field name="model_id" ref="model_astrass"/>
+          <field name="color">Black</field>
+          <field name="brand_id" ref="Audi" />
+          <field name="invoice_date" eval="(DateTime.now() - timedelta(days=336)).strftime('%Y-%m-%d')" />
+          <field name="odometer_unit">kilometers</field>
+          <field name="price">30000</field>
+          <field eval="[(6,0,[ref('vehicle_tag_leasing'),ref('vehicle_tag_break'),ref('vehicle_tag_senior')])]" name="tag_ids"/>
+      </record>
+
+      <record id="veicolo_base_3" model="purchase.order">
+          <field name="vin_sn">5111541</field>
+          <field name="model_id" ref="model_eeetra"/>
+          <field name="color">Black</field>
+          <field name="brand_id" ref="BMW" />
+          <field name="invoice_date" eval="(DateTime.now() - timedelta(days=336)).strftime('%Y-%m-%d')" />
+          <field name="odometer_unit">kilometers</field>
+          <field name="price">20000</field>
+          <field eval="[(6,0,[ref('vehicle_tag_leasing'),ref('vehicle_tag_break'),ref('vehicle_tag_senior')])]" name="tag_ids"/>
+      </record>
+
+       <record id="veicolo_base_4" model="fleet.vehicle">
+          <field name="vin_sn">5454541</field>
+          <field name="model_id" ref="model_astra"/>
+          <field name="color">Black</field>
+          <field name="brand_id" ref="BMW" />
+          <field name="invoice_date" eval="(DateTime.now() - timedelta(days=336)).strftime('%Y-%m-%d')" />
+          <field name="odometer_unit">kilometers</field>
+          <field name="price">20000</field>
+          <field eval="[(6,0,[ref('vehicle_tag_leasing'),ref('vehicle_tag_break'),ref('vehicle_tag_senior')])]" name="tag_ids"/>
+      </record>
+
+      <record id="veicolo_base_5" model="fleet.vehicle">
+           <field name="vin_sn">5454541</field>
+          <field name="model_id" ref="model_astra"/>
+          <field name="color">Black</field>
+          <field name="brand_id" ref="BMW" />
+          <field name="invoice_date" eval="(DateTime.now() - timedelta(days=336)).strftime('%Y-%m-%d')" />
+          <field name="odometer_unit">kilometers</field>
+          <field name="price">20000</field>
+          <field eval="[(6,0,[ref('vehicle_tag_leasing'),ref('vehicle_tag_break'),ref('vehicle_tag_senior')])]" name="tag_ids"/>
+      </record>
+  </odoo>

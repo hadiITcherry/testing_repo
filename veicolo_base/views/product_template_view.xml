@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- display Veicolo Product fields fields in product.template.form -->
+    <record id="view_vehicle" model="ir.ui.view">
+        <field name="name">product.template.product.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='general_information']" position='after'>
+                <page string='Vehicle' attrs="{'invisible': [('detailed_type', 'not in', ['product', 'vehicle'])]}">
+                    <group>
+                        <group string="Vehicle">
+                            <field name="brand_id">Make</field>
+                            <field name="model_id">Model</field>
+                            <field name="chassis_number">Chassis Number</field>
+                            <field name="construction_year">First Registration</field>
+                            <field name="color">Color</field>
+                            <field name="plate_number">Plate Number</field>
+                        </group>
+
+                        <group string="Engine">
+                            <label for="number_of_km"/>
+                            <div class="o_row" name="Mileage">
+                                <field name="number_of_km"/>
+                                <span>(Km)</span>
+                            </div>
+                            <field name="fuel_type">Fuel Type</field>
+                            <label for="cylinder_capacity"/>
+                            <div class="o_row" name="Cylinder Capacity">
+                                <field name="cylinder_capacity"/>
+                                <span>(CC)</span>
+                            </div>
+
+                            <label for="engine_power"/>
+                            <div class="o_row" name="Engine Power">
+                                <field name="engine_power"/>
+                                <span>(KW)</span>
+                            </div>
+                        </group>
+                    </group>
+
+                    <group string="Purchase Documents">
+                        <group string="Documents">
+                            <field name="registration_licensing"/>
+                            <field name="technical_control">Technical check/control of the vehicle</field>
+                            <field name="purchase_invoice">Purchase Invoice</field>
+                            <field name="private_paper">Paper from the private Owner</field>
+                            <field name="car_pass">Car Pass</field>
+                            <field name="conformity_certificate">Certificate of Conformity</field>
+                        </group>
+
+                        <group string="Vehicle Images">
+                            <div>
+                                <div class="row">
+                                    <field name="front_side" widget='image' class="oe_avatar"/>
+                                    <field name="left_side" widget='image' class="oe_avatar"/>
+                                    <field name="right_side" widget='image' class="oe_avatar"/>
+                                    <field name="back_side" widget='image' class="oe_avatar"/>
+                                </div>
+                                <div class="row">
+                                    <field name="interior_front" widget='image' class="oe_avatar"/>
+                                    <field name="interior_back" widget='image' class="oe_avatar"/>
+                                    <field name="interior_right" widget='image' class="oe_avatar"/>
+                                    <field name="interior_left" widget='image' class="oe_avatar"/>
+                                </div>
+                            </div>
+                            <!--                                <field name="front_side" widget='image' class="oe_avatar">Front Side</field>-->
+                            <!--                                <field name="left_side" widget='image' class="oe_avatar">Left Side</field>-->
+                            <!--                                <field name="right_side" widget='image' class="oe_avatar">Right Side</field>-->
+                            <!--                                <field name="back_side" widget='image' class="oe_avatar">Back Side</field>-->
+                            <!--                                <field name="interior_front" widget='image' class="oe_avatar">Interior Front</field>-->
+                            <!--                                <field name="interior_back" widget='image' class="oe_avatar">Interior Back</field>-->
+                            <!--                                <field name="interior_right" widget='image' class="oe_avatar">Interior Right</field>-->
+                            <!--                                <field name="interior_left" widget='image' class="oe_avatar">Interior Left</field>-->
+                        </group>
+                    </group>
+                    <!--                    Sales Docs-->
+                    <group>
+                        <group string="Sales Documents">
+                            <field name="ex_1">EX1</field>
+                            <field name="doc_invoice">Invoice</field>
+                            <field name="warranty_export">Exportation Warranty</field>
+                            <field name="id_docs">Copy of ID (Recto-Verso) or Passport of the client</field>
+                            <field name="warranty_docs">Warranty document</field>
+                        </group>
+                        <group string="Price">
+                            <div><field name="price_with_ttc"/><span>Price with TTC</span></div>
+                            <field name="net_price" attrs="{'readonly': [('price_with_ttc', '=', True)]}">Net Price</field>
+                            <field name="vat_type">VAT Type</field>
+                            <field name="vat_amount" readonly="1">VAT amount</field>
+                            <field name="total_price" attrs="{'readonly': [('price_with_ttc', '=', False)]}">Total Price</field>
+                    </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
